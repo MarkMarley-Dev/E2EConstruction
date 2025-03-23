@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { supabase } from '../../lib/supabase/client';
-import styles from './Auth.module.css';
+import styles from './styles/Auth.module.css';
 
 export function ForgotPasswordForm() {
   const [email, setEmail] = useState('');

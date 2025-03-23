@@ -1,10 +1,12 @@
 // app/page.tsx
 import Link from 'next/link';
 import styles from './styles/Home.module.css';
+import { AuthRedirect } from './components/auth/AuthRedirect';
 
 export default function Home() {
   return (
     <div className={styles.container}>
+        <AuthRedirect redirectAuthenticated="/dashboard" redirectUnauthenticated={null} />
       <div className={styles.card}>
         <h1 className={styles.title}>
           Planning & Construction Platform

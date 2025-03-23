@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { supabase } from '../../lib/supabase/client';
-import styles from './Auth.module.css';
+import styles from './styles/Auth.module.css';
 
 type RegisterFormProps = {
   redirectTo?: string;
@@ -143,7 +143,6 @@ export function RegisterForm({ redirectTo }: RegisterFormProps = {}) {
             <option value="property_owner">Property Owner</option>
             <option value="contractor">Contractor</option>
             <option value="surveyor">Surveyor</option>
-            <option value="admin">Surveyor</option>
           </select>
         </div>
         

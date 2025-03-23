@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { supabase } from '../../lib/supabase/client';
-import styles from './Auth.module.css';
+import styles from './styles/Auth.module.css';
 
 type LoginFormProps = {
   redirectTo?: string;
