@@ -4,7 +4,7 @@
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import { Session, User } from '@supabase/supabase-js';
-import { supabase } from '@/lib/supabase/client';
+import { supabase } from '../lib/supabase/client';
 
 type UserProfile = {
   id: string;

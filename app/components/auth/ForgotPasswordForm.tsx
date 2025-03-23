@@ -2,7 +2,7 @@
 // components/auth/ForgotPasswordForm.tsx
 import { useState } from 'react';
 import Link from 'next/link';
-import { supabase } from '@/lib/supabase/client';
+import { supabase } from '../../lib/supabase/client';
 import styles from './Auth.module.css';
 
 export function ForgotPasswordForm() {

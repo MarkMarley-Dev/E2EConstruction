@@ -2,7 +2,7 @@
 // src/app/components/auth/guards/GuestGuard.tsx
 import { useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useAuth } from '@/context/AuthContext';
+import { useAuth } from '../../../context/AuthContext';
 
 type GuestGuardProps = {
   children: React.ReactNode;
