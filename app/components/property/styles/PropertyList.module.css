@@ -1,0 +1,129 @@
+/* app/components/property/styles/PropertyList.module.css */
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1.5rem 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .cardGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Add property button */
+.addButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: white;
+  background-color: #6366f1;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.addButton:hover {
+  background-color: #4f46e5;
+}
+
+.addButtonIcon {
+  margin-right: 0.5rem;
+  margin-left: -0.25rem;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+/* Empty state styles */
+.emptyState {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.emptyStateIcon {
+  height: 3rem;
+  width: 3rem;
+  color: #9ca3af;
+  margin: 0 auto;
+}
+
+.emptyStateTitle {
+  margin-top: 0.5rem;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+.emptyStateText {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Error container styles */
+.errorContainer {
+  padding: 1.5rem;
+  background-color: #fee2e2;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+/* Loading state styles */
+.loadingState {
+  padding: 2.5rem 0;
+}
+
+.loadingPulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loadingBar {
+  height: 1rem;
+  background-color: #e5e7eb;
+  border-radius: 0.25rem;
+}
+
+.loadingRect {
+  height: 4rem;
+  background-color: #e5e7eb;
+  border-radius: 0.25rem;
+}

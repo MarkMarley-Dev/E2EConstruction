@@ -3,7 +3,7 @@
 // src/app/components/auth/AuthRedirect.tsx
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '../../lib/supabase/client';
+import { supabase } from '../../../lib/supabase/client';
 
 type AuthRedirectProps = {
   redirectAuthenticated?: string;

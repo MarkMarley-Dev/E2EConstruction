@@ -3,7 +3,7 @@
 // src/app/components/auth/guards/AuthGuard.tsx
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
-import { useAuth } from '../../../context/AuthContext';
+import { useAuth } from '../../../../context/AuthContext';
 
 type AuthGuardProps = {
   children: React.ReactNode;

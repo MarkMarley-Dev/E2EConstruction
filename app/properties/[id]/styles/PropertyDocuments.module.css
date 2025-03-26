@@ -1,0 +1,323 @@
+.container {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  color: #333;
+}
+
+.uploadButton {
+  background-color: #4a6cf7;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.uploadButton:hover {
+  background-color: #3a5ad9;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #666;
+  background-color: #f9f9f9;
+  border-radius: 0.25rem;
+  border: 1px dashed #ddd;
+}
+
+.documentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.documentItem {
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
+  border: 1px solid #eee;
+  border-radius: 0.25rem;
+  background-color: #fbfbfb;
+  transition: box-shadow 0.2s;
+}
+
+.documentItem:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.documentIcon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  color: #555;
+}
+
+.documentInfo {
+  flex: 1;
+}
+
+.documentTitle {
+  display: block;
+  font-weight: 500;
+  color: #4a6cf7;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+}
+
+.documentTitle:hover {
+  text-decoration: underline;
+}
+
+.documentMeta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.documentType {
+  background-color: #f0f4ff;
+  padding: 0.125rem 0.5rem;
+  border-radius: 1rem;
+  color: #4a6cf7;
+}
+
+.documentSize, .documentDate {
+  color: #666;
+}
+
+.documentDescription {
+  font-size: 0.875rem;
+  color: #555;
+  margin: 0.5rem 0 0;
+  line-height: 1.4;
+}
+
+/* Loading state */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  color: #666;
+}
+
+.loadingSpinner {
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 3px solid #4a6cf7;
+  width: 2rem;
+  height: 2rem;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Error state */
+.errorContainer {
+  padding: 1rem;
+  background-color: #fff1f1;
+  border-left: 4px solid #ff4d4f;
+  margin-bottom: 1rem;
+}
+
+.errorMessage {
+  color: #cf1322;
+  margin: 0;
+}
+
+/* Modal styles */
+.modalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: white;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.modalHeader h4 {
+  margin: 0;
+  font-weight: 600;
+  color: #333;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+  color: #999;
+}
+
+.closeButton:hover {
+  color: #333;
+}
+
+.modalContent {
+  padding: 1.5rem;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #eee;
+  gap: 0.75rem;
+}
+
+/* Form elements */
+.formGroup {
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.select, .textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  color: #333;
+  background-color: white;
+}
+
+.select:focus, .textarea:focus {
+  outline: none;
+  border-color: #4a6cf7;
+  box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+}
+
+.fileInputLabel {
+  display: block;
+  padding: 0.75rem 1rem;
+  background-color: #f5f5f5;
+  border: 1px dashed #ddd;
+  border-radius: 0.25rem;
+  text-align: center;
+  cursor: pointer;
+  color: #666;
+  font-size: 0.875rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileInputLabel:hover {
+  background-color: #eee;
+}
+
+.fileInput {
+  display: none;
+}
+
+/* Upload progress */
+.uploadProgress {
+  margin-top: 1rem;
+  height: 0.5rem;
+  background-color: #f0f0f0;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: #4a6cf7;
+  transition: width 0.3s ease;
+}
+
+.progressText {
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+/* Buttons */
+.cancelButton, .confirmButton {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+}
+
+.cancelButton {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.cancelButton:hover:not(:disabled) {
+  background-color: #e5e5e5;
+}
+
+.confirmButton {
+  background-color: #4a6cf7;
+  color: white;
+}
+
+.confirmButton:hover:not(:disabled) {
+  background-color: #3a5ad9;
+}
+
+.cancelButton:disabled, .confirmButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
