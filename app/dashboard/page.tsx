@@ -3,7 +3,7 @@
 // src/app/dashboard/page.tsx
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { supabase } from '../lib/supabase/client';
+import { supabase } from '@/lib/supabase/client';
 import styles from './styles/Dashboard.module.css';
 
 export default function Dashboard() {

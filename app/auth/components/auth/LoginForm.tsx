@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import { supabase } from '../../../lib/supabase/client';
+import { supabase } from '@/lib/supabase/client';
 import styles from './styles/Auth.module.css';
 
 type LoginFormProps = {
@@ -25,18 +25,29 @@ export function LoginForm({ redirectTo }: LoginFormProps = {}) {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    
+    console.log("Login attempt with:", email);
 
     try {
+      console.log("Calling Supabase auth...");
       const { data, error } = await supabase.auth.signInWithPassword({
         email,
         password,
       });
 
+      console.log("Auth response:", data, error);
+      
+      // Check if session exists
+      const currentSession = await supabase.auth.getSession();
+      console.log("Current session:", currentSession);
+
       if (error) throw error;
       
-      // Redirect after successful login
-      router.push(finalRedirectTo);
+      console.log("Login successful, redirecting to:", finalRedirectTo);
+      // Use window.location for a hard redirect instead of router
+      window.location.href = finalRedirectTo;
     } catch (error: any) {
+      console.error("Login error:", error);
       setError(error.message || 'An error occurred during login');
     } finally {
       setLoading(false);
