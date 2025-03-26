@@ -1,0 +1,143 @@
+/* styles/FileUpload.module.css */
+.container {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.fileInput {
+  display: none;
+}
+
+.uploadLabel {
+  display: block;
+  cursor: pointer;
+  width: 100%;
+}
+
+.uploadArea {
+  border: 2px dashed #d1d5db;
+  border-radius: 6px;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #4b5563;
+  transition: border-color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.uploadArea:hover {
+  border-color: #2563eb;
+  background-color: rgba(37, 99, 235, 0.05);
+}
+
+.uploadText {
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.uploadHint {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
+.selectedFile {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.fileInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.fileName {
+  font-weight: 500;
+  word-break: break-all;
+  max-width: 80%;
+}
+
+.fileSize {
+  color: #6b7280;
+  font-size: 0.75rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.uploadButton {
+  background-color: #2563eb;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.uploadButton:hover {
+  background-color: #1d4ed8;
+}
+
+.cancelButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+  color: #4b5563;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.cancelButton:hover {
+  background-color: #e5e7eb;
+}
+
+.progressContainer {
+  background-color: #f3f4f6;
+  border-radius: 4px;
+  height: 0.75rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressBar {
+  background-color: #2563eb;
+  height: 100%;
+  transition: width 0.3s ease-in-out;
+}
+
+.progressText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.error {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  padding: 0.75rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+}
