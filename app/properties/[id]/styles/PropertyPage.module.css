@@ -15,13 +15,13 @@
 .title {
   font-size: 1.875rem;
   font-weight: 700;
-  color: #111827;
+  color: var(--color-primary);
   margin-bottom: 0.5rem;
 }
 
 .postcode {
   font-size: 1.125rem;
-  color: #6b7280;
+  color: var(--color-text-light);
 }
 
 .actions {
@@ -34,7 +34,7 @@
   align-items: center;
   justify-content: center;
   padding: 0.625rem 1.25rem;
-  background-color: #4f46e5;
+  background-color: var(--color-primary);
   color: white;
   border-radius: 0.375rem;
   font-weight: 500;
@@ -43,7 +43,7 @@
 }
 
 .editButton:hover {
-  background-color: #4338ca;
+  background-color: var(--color-primary-dark);
 }
 
 .deleteButton {
@@ -51,9 +51,9 @@
   align-items: center;
   justify-content: center;
   padding: 0.625rem 1.25rem;
-  background-color: #ffffff;
-  color: #ef4444;
-  border: 1px solid #ef4444;
+  background-color: var(--color-background);
+  color: var(--color-error);
+  border: 1px solid var(--color-error);
   border-radius: 0.375rem;
   font-weight: 500;
   cursor: pointer;
@@ -61,15 +61,16 @@
 }
 
 .deleteButton:hover {
-  background-color: #fee2e2;
+  background-color: rgba(181, 99, 87, 0.1);
 }
 
 .propertyCard {
-  background-color: white;
+  background-color: var(--color-card-bg);
   border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px var(--color-shadow);
   padding: 2rem;
   margin-bottom: 2rem;
+  border-left: 3px solid var(--color-primary);
 }
 
 .detailsGrid {
@@ -86,26 +87,26 @@
 
 .detailLabel {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--color-text-light);
   margin-bottom: 0.25rem;
 }
 
 .detailValue {
   font-size: 1.125rem;
   font-weight: 500;
-  color: #111827;
+  color: var(--color-text);
 }
 
 .description {
   margin-bottom: 2rem;
   padding-top: 1rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-border);
 }
 
 .sectionTitle {
   font-size: 1.25rem;
   font-weight: 600;
-  color: #111827;
+  color: var(--color-primary);
   margin-bottom: 1rem;
 }
 
@@ -113,9 +114,9 @@
   display: flex;
   justify-content: space-between;
   padding-top: 1rem;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--color-border);
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--color-text-light);
 }
 
 .metaLabel {
@@ -134,27 +135,27 @@
 }
 
 .actionCard {
-  background-color: white;
+  background-color: var(--color-card-bg);
   border-radius: 0.5rem;
   padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px var(--color-shadow);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .actionCard:hover {
   transform: translateY(-4px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px var(--color-shadow);
 }
 
 .actionCard h3 {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #111827;
+  color: var(--color-primary);
   margin-bottom: 0.75rem;
 }
 
 .actionCard p {
-  color: #6b7280;
+  color: var(--color-text-light);
   margin-bottom: 1.5rem;
   font-size: 0.9rem;
 }
@@ -162,7 +163,7 @@
 .cardButton {
   display: inline-block;
   padding: 0.625rem 1.25rem;
-  background-color: #4f46e5;
+  background-color: var(--color-secondary);
   color: white;
   border-radius: 0.375rem;
   font-weight: 500;
@@ -171,15 +172,15 @@
 }
 
 .cardButton:hover {
-  background-color: #4338ca;
+  background-color: var(--color-secondary-dark);
 }
 
 .backButton {
   display: inline-flex;
   align-items: center;
   padding: 0.625rem 1.25rem;
-  background-color: #f3f4f6;
-  color: #374151;
+  background-color: var(--color-gray-200);
+  color: var(--color-text);
   border-radius: 0.375rem;
   font-weight: 500;
   text-decoration: none;
@@ -187,7 +188,7 @@
 }
 
 .backButton:hover {
-  background-color: #e5e7eb;
+  background-color: var(--color-gray-300);
 }
 
 /* Loading state */
@@ -202,7 +203,7 @@
 .loadingSpinner {
   border: 4px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  border-top: 4px solid #4f46e5;
+  border-top: 4px solid var(--color-secondary);
   width: 40px;
   height: 40px;
   animation: spin 1s linear infinite;
@@ -221,7 +222,7 @@
 }
 
 .errorContainer h2 {
-  color: #b91c1c;
+  color: var(--color-error);
   margin-bottom: 1rem;
 }
 
@@ -240,19 +241,19 @@
 }
 
 .modal {
-  background-color: white;
+  background-color: var(--color-background);
   border-radius: 0.5rem;
   padding: 2rem;
   width: 100%;
   max-width: 500px;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 15px var(--color-shadow);
 }
 
 .modalTitle {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #b91c1c;
+  color: var(--color-error);
 }
 
 .modalActions {
@@ -264,8 +265,8 @@
 
 .cancelModalButton {
   padding: 0.625rem 1.25rem;
-  background-color: #f3f4f6;
-  color: #374151;
+  background-color: var(--color-gray-200);
+  color: var(--color-text);
   border: none;
   border-radius: 0.375rem;
   font-weight: 500;
@@ -274,12 +275,12 @@
 }
 
 .cancelModalButton:hover {
-  background-color: #e5e7eb;
+  background-color: var(--color-gray-300);
 }
 
 .confirmDeleteButton {
   padding: 0.625rem 1.25rem;
-  background-color: #ef4444;
+  background-color: var(--color-error);
   color: white;
   border: none;
   border-radius: 0.375rem;
@@ -289,7 +290,7 @@
 }
 
 .confirmDeleteButton:hover {
-  background-color: #dc2626;
+  background-color: var(--color-error-dark);
 }
 
 .confirmDeleteButton:disabled,

@@ -1,9 +1,10 @@
 .container {
-  background-color: #fff;
+  background-color: var(--color-card-bg);
   border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px var(--color-shadow);
   padding: 1.5rem;
   margin-bottom: 2rem;
+  border-left: 3px solid var(--color-accent); /* Sage accent */
 }
 
 .header {
@@ -17,11 +18,11 @@
   font-size: 1.25rem;
   font-weight: 600;
   margin: 0;
-  color: #333;
+  color: var(--color-primary);
 }
 
 .uploadButton {
-  background-color: #4a6cf7;
+  background-color: var(--color-accent);
   color: white;
   border: none;
   padding: 0.5rem 1rem;
@@ -32,7 +33,7 @@
 }
 
 .uploadButton:hover {
-  background-color: #3a5ad9;
+  background-color: var(--color-accent-dark);
 }
 
 .emptyState {
@@ -41,10 +42,10 @@
   align-items: center;
   justify-content: center;
   padding: 3rem 1rem;
-  color: #666;
-  background-color: #f9f9f9;
+  color: var(--color-text-light);
+  background-color: var(--color-gray-100);
   border-radius: 0.25rem;
-  border: 1px dashed #ddd;
+  border: 1px dashed var(--color-border);
   text-align: center;
   gap: 1rem;
 }
@@ -61,13 +62,13 @@
   border-radius: 0.25rem;
   overflow: hidden;
   aspect-ratio: 4/3;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px var(--color-shadow);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .imageContainer:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--color-shadow);
 }
 
 .primaryImage {
@@ -109,13 +110,13 @@
   border-radius: 50%;
   border: none;
   background-color: rgba(255, 255, 255, 0.8);
-  color: #666;
+  color: var(--color-text-light);
   font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px var(--color-shadow);
   transition: background-color 0.2s, color 0.2s;
 }
 
@@ -124,11 +125,11 @@
 }
 
 .primaryButton {
-  color: #f59e0b;
+  color: var(--color-warning);
 }
 
 .deleteButton:hover {
-  background-color: #ef4444;
+  background-color: var(--color-error);
   color: white;
 }
 
@@ -139,13 +140,13 @@
   align-items: center;
   justify-content: center;
   padding: 3rem 1rem;
-  color: #666;
+  color: var(--color-text-light);
 }
 
 .loadingSpinner {
   border: 3px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  border-top: 3px solid #4a6cf7;
+  border-top: 3px solid var(--color-accent);
   width: 2rem;
   height: 2rem;
   animation: spin 1s linear infinite;
@@ -160,8 +161,8 @@
 /* Error state */
 .errorContainer {
   padding: 1.5rem;
-  background-color: #fff1f1;
-  border-left: 4px solid #ff4d4f;
+  background-color: rgba(181, 99, 87, 0.1);
+  border-left: 4px solid var(--color-error);
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
@@ -170,20 +171,20 @@
 }
 
 .errorMessage {
-  color: #cf1322;
+  color: var(--color-error);
   margin: 0;
 }
 
 .retryButton {
   padding: 0.5rem 1rem;
-  background-color: #f5f5f5;
+  background-color: var(--color-gray-200);
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
 }
 
 .retryButton:hover {
-  background-color: #e5e5e5;
+  background-color: var(--color-gray-300);
 }
 
 /* Modal styles */
@@ -204,7 +205,7 @@
   position: relative;
   max-width: 90%;
   max-height: 90%;
-  background-color: white;
+  background-color: var(--color-background);
   border-radius: 0.5rem;
   overflow: hidden;
 }
@@ -240,11 +241,11 @@
 
 /* Upload Modal */
 .uploadModal {
-  background-color: white;
+  background-color: var(--color-background);
   border-radius: 0.5rem;
   width: 100%;
   max-width: 500px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px var(--color-shadow);
   overflow: hidden;
 }
 
@@ -253,13 +254,13 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.5rem;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .modalHeader h4 {
   margin: 0;
   font-weight: 600;
-  color: #333;
+  color: var(--color-primary);
 }
 
 .closeButton {
@@ -269,16 +270,16 @@
   line-height: 1;
   padding: 0;
   cursor: pointer;
-  color: #999;
+  color: var(--color-text-light);
 }
 
 .closeButton:hover {
-  color: #333;
+  color: var(--color-text);
 }
 
 .dropZone {
   padding: 2rem;
-  border: 2px dashed #ddd;
+  border: 2px dashed var(--color-border);
   border-radius: 0.25rem;
   margin: 1.5rem;
   display: flex;
@@ -291,8 +292,8 @@
 }
 
 .dropZone:hover {
-  border-color: #4a6cf7;
-  background-color: #f8faff;
+  border-color: var(--color-accent);
+  background-color: rgba(125, 140, 124, 0.05); /* Very light sage */
 }
 
 .fileInput {
@@ -302,12 +303,12 @@
 .uploadIcon {
   font-size: 2rem;
   margin-bottom: 1rem;
-  color: #666;
+  color: var(--color-text-light);
 }
 
 .supportedFormats {
   font-size: 0.75rem;
-  color: #999;
+  color: var(--color-text-light);
   margin-top: 0.5rem;
 }
 
@@ -326,7 +327,7 @@
 
 .fileItem {
   padding: 0.5rem;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--color-border-light);
   font-size: 0.875rem;
   white-space: nowrap;
   overflow: hidden;
@@ -336,7 +337,7 @@
 .uploadProgress {
   margin: 0 1.5rem 1.5rem;
   height: 0.5rem;
-  background-color: #f0f0f0;
+  background-color: var(--color-gray-200);
   border-radius: 0.25rem;
   overflow: hidden;
   position: relative;
@@ -344,7 +345,7 @@
 
 .progressBar {
   height: 100%;
-  background-color: #4a6cf7;
+  background-color: var(--color-accent);
   transition: width 0.3s ease;
 }
 
@@ -352,7 +353,7 @@
   display: block;
   text-align: center;
   font-size: 0.75rem;
-  color: #666;
+  color: var(--color-text-light);
   margin-top: 0.5rem;
 }
 
@@ -360,7 +361,7 @@
   display: flex;
   justify-content: flex-end;
   padding: 1rem 1.5rem;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--color-border);
   gap: 0.75rem;
 }
 
@@ -374,21 +375,21 @@
 }
 
 .cancelButton {
-  background-color: #f5f5f5;
-  color: #666;
+  background-color: var(--color-gray-200);
+  color: var(--color-text-light);
 }
 
 .cancelButton:hover:not(:disabled) {
-  background-color: #e5e5e5;
+  background-color: var(--color-gray-300);
 }
 
 .confirmButton {
-  background-color: #4a6cf7;
+  background-color: var(--color-accent);
   color: white;
 }
 
 .confirmButton:hover:not(:disabled) {
-  background-color: #3a5ad9;
+  background-color: var(--color-accent-dark);
 }
 
 .cancelButton:disabled, .confirmButton:disabled {

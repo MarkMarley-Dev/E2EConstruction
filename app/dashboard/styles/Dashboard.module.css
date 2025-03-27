@@ -16,12 +16,12 @@
 .dashboardTitle {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #333;
+  color: var(--color-primary); /* Charcoal color */
 }
 
 .logoutButton {
   padding: 0.5rem 1rem;
-  background-color: #e53e3e;
+  background-color: var(--color-error); /* Using theme error color */
   color: white;
   border: none;
   border-radius: 0.25rem;
@@ -31,32 +31,105 @@
 }
 
 .logoutButton:hover {
-  background-color: #c53030;
+  background-color: var(--color-error-dark); /* Darker error color on hover */
 }
 
 .card {
-  background-color: white;
+  background-color: var(--color-card-bg);
   border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px var(--color-shadow);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  border-left: 3px solid var(--color-secondary); /* Dusty rose accent border */
 }
 
 .cardTitle {
   font-size: 1.25rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: #2d3748;
+  color: var(--color-primary);
 }
 
 .userInfo {
   margin-bottom: 0.5rem;
-  color: #6a5568;
+  color: var(--color-text-light);
 }
 
 .loadingContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
+  gap: 1rem;
+  color: var(--color-text-light);
+}
+
+/* Additional utility classes that align with our theme */
+.accentText {
+  color: var(--color-secondary);
+}
+
+.accentButton {
+  background-color: var(--color-secondary);
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.accentButton:hover {
+  background-color: var(--color-secondary-dark);
+}
+
+.sageButton {
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sageButton:hover {
+  background-color: var(--color-accent-dark);
+}
+
+.dashboardSection {
+  margin-bottom: 2rem;
+}
+
+.dashboardSectionTitle {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.5rem;
+}
+
+.statCard {
+  background-color: var(--color-card-bg);
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px var(--color-shadow);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 0.25rem;
+}
+
+.statLabel {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
 }

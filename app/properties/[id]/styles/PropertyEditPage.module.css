@@ -6,42 +6,67 @@
 }
 
 .formContainer {
-  background-color: #ffffff;
+  background-color: var(--color-card-bg);
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px var(--color-shadow);
   padding: 2rem;
   max-width: 800px;
   margin: 0 auto;
+  border-left: 3px solid var(--color-secondary); /* Dusty rose accent */
 }
 
 .title {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: #333;
+  color: var(--color-primary);
 }
 
 .loadingContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 50vh;
+  gap: 1rem;
+}
+
+.loadingSpinner {
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 3px solid var(--color-secondary);
+  width: 2rem;
+  height: 2rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .notFound {
   text-align: center;
   font-size: 1rem;
-  color: #4b5563;
+  color: var(--color-text-light);
+  padding: 2rem;
+  background-color: var(--color-gray-100);
+  border-radius: 0.5rem;
+  margin-top: 2rem;
 }
 
 .errorMessage {
   text-align: center;
   padding: 2rem;
+  color: var(--color-error);
+  background-color: rgba(181, 99, 87, 0.1);
+  border-radius: 0.5rem;
+  margin-top: 2rem;
 }
 
 .backButton {
   margin-top: 1rem;
-  background-color: #2563eb;
+  background-color: var(--color-primary);
   color: white;
   padding: 0.625rem 1.25rem;
   border-radius: 0.375rem;
@@ -52,5 +77,119 @@
 }
 
 .backButton:hover {
-  background-color: #1d4ed8;
+  background-color: var(--color-primary-dark);
+}
+
+/* Form elements styling */
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.input, .select, .textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input:focus, .select:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.formButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.cancelButton {
+  padding: 0.625rem 1.25rem;
+  background-color: var(--color-gray-200);
+  color: var(--color-text);
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancelButton:hover {
+  background-color: var(--color-gray-300);
+}
+
+.saveButton {
+  padding: 0.625rem 1.25rem;
+  background-color: var(--color-secondary);
+  color: white;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.saveButton:hover {
+  background-color: var(--color-secondary-dark);
+}
+
+.saveButton:disabled, .cancelButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.checkboxGroup {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.checkbox {
+  margin-right: 0.5rem;
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-secondary);
+}
+
+.checkboxLabel {
+  font-size: 1rem;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.infoText {
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  margin-top: 0.5rem;
+}
+
+.fieldset {
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.legend {
+  padding: 0 0.5rem;
+  color: var(--color-primary);
+  font-weight: 500;
 }
