@@ -1,10 +1,10 @@
 'use client';
 
-// src/app/context/AuthContext.tsx
+// app/context/AuthContext.tsx
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { useRouter } from 'next/navigation';
 import { Session, User } from '@supabase/supabase-js';
-import { supabase } from '../lib/supabase/client';
+import { createClient } from '@/lib/supabase/client';
 
 type UserProfile = {
   id: string;
@@ -31,6 +31,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const supabase = createClient();
 
   useEffect(() => {
     // Get initial session
@@ -75,7 +76,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
     
     initializeAuth();
-  }, [router]);
+  }, [router, supabase]);
 
   // Fetch user profile from the database
   const fetchProfile = async (userId: string) => {

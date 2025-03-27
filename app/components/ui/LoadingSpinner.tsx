@@ -1,6 +1,6 @@
 // components/ui/LoadingSpinner.tsx
 import React from 'react';
-import styles from '@/styles/LoadingSpinner.module.css';
+import styles from './styles/LoadingSpinner.module.css';
 
 interface LoadingSpinnerProps {
   size?: 'small' | 'medium' | 'large';

@@ -5,6 +5,7 @@ import styles from './styles/PropertyCard.module.css';
 
 interface PropertyCardProps {
   property: Property;
+  onClick?: () => void
 }
 
 export default function PropertyCard({ property }: PropertyCardProps) {

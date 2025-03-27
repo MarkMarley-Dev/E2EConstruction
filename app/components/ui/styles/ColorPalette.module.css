@@ -1,0 +1,212 @@
+/* @/app/components/ui/styles/ColorPalette.module.css */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--color-background);
+  box-shadow: 0 4px 8px var(--color-shadow);
+  border-radius: 8px;
+}
+
+.title {
+  margin-bottom: 2rem;
+  color: var(--color-text);
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.section {
+  margin-bottom: 2.5rem;
+}
+
+.section h3 {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-text);
+  font-size: 1.5rem;
+}
+
+.swatchGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.swatch {
+  height: 100px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.swatch:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.swatchName {
+  padding: 0.75rem;
+  font-weight: bold;
+}
+
+.swatchValue {
+  padding: 0.75rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  font-family: monospace;
+  font-size: 0.875rem;
+}
+
+/* UI Components Preview Styling */
+.componentPreview {
+  background-color: var(--color-background-alt);
+  padding: 2rem;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.button {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 1rem;
+  max-width: 200px;
+}
+
+.button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.buttonSecondary {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: 4px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-size: 1rem;
+  max-width: 200px;
+}
+
+.buttonSecondary:hover {
+  background-color: var(--color-hover);
+}
+
+.card {
+  background-color: var(--color-white);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--color-shadow);
+  padding: 1.5rem;
+  max-width: 400px;
+}
+
+.card h4 {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  color: var(--color-text);
+}
+
+.card p {
+  margin: 0;
+  color: var(--color-text-light);
+}
+
+.statusContainer {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.statusSuccess,
+.statusWarning,
+.statusError {
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-block;
+}
+
+.statusSuccess {
+  background-color: rgba(64, 145, 108, 0.15);
+  color: var(--color-success);
+}
+
+.statusWarning {
+  background-color: rgba(249, 199, 79, 0.15);
+  color: var(--color-warning-dark);
+}
+
+.statusError {
+  background-color: rgba(249, 65, 68, 0.15);
+  color: var(--color-error);
+}
+
+.formElements {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.formElements input,
+.formElements select {
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 0.75rem;
+  min-width: 200px;
+  font-size: 1rem;
+}
+
+.formElements input:focus,
+.formElements select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .swatchGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  
+  .componentPreview {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .swatchGrid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+  
+  .swatch {
+    height: 80px;
+  }
+  
+  .swatchName,
+  .swatchValue {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+}

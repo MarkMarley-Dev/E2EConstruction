@@ -4,7 +4,7 @@
 import { useState, useEffect } from 'react';
 import { propertyService } from '@/lib/services/propertyService';
 import { PropertyDocument } from '@/types/supabase';
-import styles from './PropertyDocuments.module.css';
+import styles from '@/properties/[id]/styles/PropertyDocuments.module.css';
 
 interface PropertyDocumentsProps {
   propertyId: string;

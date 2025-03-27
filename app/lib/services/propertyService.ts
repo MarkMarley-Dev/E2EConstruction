@@ -1,6 +1,6 @@
 // app/lib/services/propertyService.ts
 import { supabase } from '@/lib/supabase/client';
-import { createServerSupabaseClient } from '@/lib/supabase/client';
+import { createClient } from '@/lib/supabase/client';
 import { PropertyInsert, PropertyUpdate, Property } from '@/types/supabase';
 
 // Client-side property service
@@ -271,7 +271,7 @@ export const serverPropertyService = {
    * Get all properties for a specific user from the server
    */
   async getUserProperties(userId: string): Promise<{ data: Property[] | null; error: Error | null }> {
-    const supabase = await createServerSupabaseClient();
+    const supabase = createClient();
     const { data, error } = await supabase
       .from('properties')
       .select('*')
@@ -285,7 +285,7 @@ export const serverPropertyService = {
    * Get a single property by ID from the server
    */
   async getPropertyById(id: string): Promise<{ data: Property | null; error: Error | null }> {
-    const supabase = await createServerSupabaseClient();
+    const supabase = createClient();
     const { data, error } = await supabase
       .from('properties')
       .select('*')
@@ -299,7 +299,7 @@ export const serverPropertyService = {
    * Get property images from the server
    */
   async getPropertyImages(propertyId: string) {
-    const supabase = await createServerSupabaseClient();
+    const supabase = createClient();
     const { data, error } = await supabase
       .from('property_images')
       .select('*')
@@ -313,7 +313,7 @@ export const serverPropertyService = {
    * Get property documents from the server
    */
   async getPropertyDocuments(propertyId: string) {
-    const supabase = await createServerSupabaseClient();
+    const supabase = createClient();
     const { data, error } = await supabase
       .from('property_documents')
       .select('*')
