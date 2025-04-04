@@ -2,21 +2,25 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Property, PropertyUpdate } from '@/types/supabase';
-import styles from '@/styles/PropertyForm.module.css';
+import { Property, PropertyUpdate, PropertyInsert } from '@/types/supabase';
+import styles from './styles/PropertyForm.module.css';
 
 interface PropertyFormProps {
   initialData?: Property;
-  onSubmit: (formData: PropertyUpdate) => void;
-  onCancel: () => void;
+  onSubmit: (formData: PropertyUpdate | PropertyInsert) => void;
+  onCancel?: () => void;
   isSubmitting: boolean;
+  submitButtonText?: string;
+  submitButtonClassName?: string;
 }
 
 export default function PropertyForm({
   initialData,
   onSubmit,
   onCancel,
-  isSubmitting
+  isSubmitting,
+  submitButtonText = 'Save Property',
+  submitButtonClassName
 }: PropertyFormProps) {
   const [formData, setFormData] = useState<PropertyUpdate>({
     property_name: '',
@@ -124,7 +128,19 @@ export default function PropertyForm({
       return;
     }
     
-    onSubmit(formData);
+    // Make sure property_type is defined (required for PropertyInsert)
+    const submissionData = {
+      ...formData,
+      property_type: formData.property_type as "residential" | "commercial" | "mixed_use" | "land"
+    };
+    
+    onSubmit(submissionData);
+  };
+  
+  const handleCancel = () => {
+    if (onCancel) {
+      onCancel();
+    }
   };
 
   return (
@@ -407,20 +423,22 @@ export default function PropertyForm({
       )}
 
       <div className={styles.buttonGroup}>
-        <button
-          type="button"
-          onClick={onCancel}
-          disabled={isSubmitting}
-          className={styles.cancelButton}
-        >
-          Cancel
-        </button>
+        {onCancel && (
+          <button
+            type="button"
+            onClick={handleCancel}
+            disabled={isSubmitting}
+            className={styles.cancelButton}
+          >
+            Cancel
+          </button>
+        )}
         <button 
           type="submit" 
           disabled={isSubmitting}
-          className={styles.saveButton}
+          className={submitButtonClassName || styles.saveButton}
         >
-          {isSubmitting ? 'Saving...' : 'Save Property'}
+          {isSubmitting ? 'Saving...' : submitButtonText}
         </button>
       </div>
     </form>

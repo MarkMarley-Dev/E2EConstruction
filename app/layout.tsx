@@ -1,14 +1,12 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css'; // Make sure this file exists or remove this import
-
-// Initialize font
-const inter = Inter({ subsets: ['latin'] });
+import { Providers } from './providers';
+import MainLayout from './components/ui/MainLayout';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Planning & Construction Platform',
-  description: 'End-to-end platform for planning and construction projects',
+  title: 'Construction Platform',
+  description: 'Your platform description',
 };
 
 export default function RootLayout({
@@ -17,9 +15,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        {children}
+    <html lang="en" suppressHydrationWarning>
+      <body>
+        <Providers>
+          <MainLayout>
+            {children}
+          </MainLayout>
+        </Providers>
       </body>
     </html>
   );

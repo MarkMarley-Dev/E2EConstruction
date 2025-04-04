@@ -98,7 +98,7 @@ export default function PropertyCard({ property }: PropertyCardProps) {
             
             {property.year_built && (
               <div>
-                <span className={styles.cardDetailLabel}>Year Built:</span>
+                <span className={styles.cardDetailLabel}> EST Year Built:</span>
                 <p className={styles.cardDetailValue}>{property.year_built}</p>
               </div>
             )}

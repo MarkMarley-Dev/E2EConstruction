@@ -1,0 +1,247 @@
+/* app/components/ui/styles/Navbar.module.css */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Blueprint theme */
+.navbar {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.blueprint {
+  background-color: #ffffff;
+  color: #333333;
+  border-bottom: 1px solid #d1e3fa;
+}
+
+/* Minimalist theme */
+.minimalist {
+  background-color: #ffffff;
+  color: #333333;
+  border-bottom: 1px solid #eaeaea;
+}
+
+/* Construction theme */
+.construction {
+  background-color: #ffffff;
+  color: #333333;
+  border-bottom: 2px solid #ffb400;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navBrand {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* Theme-specific brand names */
+.blueprint .brandName {
+  color: #0072ce;
+}
+
+.minimalist .brandName {
+  color: #333333;
+}
+
+.construction .brandName {
+  color: #d97600;
+}
+
+.navLinksDesktop {
+  display: flex;
+  gap: 1.5rem;
+  margin-right: auto;
+  margin-left: 2rem;
+}
+
+.navLink {
+  text-decoration: none;
+  padding: 0.5rem 0;
+  position: relative;
+  font-weight: 500;
+  transition: color 0.2s ease-in-out;
+}
+
+/* Blueprint theme links */
+.blueprint .navLink {
+  color: #4a5568;
+}
+
+.blueprint .navLink:hover {
+  color: #0072ce;
+}
+
+.blueprint .navLink.active {
+  color: #0072ce;
+}
+
+.blueprint .navLink.active:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #0072ce;
+}
+
+/* Minimalist theme links */
+.minimalist .navLink {
+  color: #4a5568;
+}
+
+.minimalist .navLink:hover {
+  color: #000000;
+}
+
+.minimalist .navLink.active {
+  color: #000000;
+}
+
+.minimalist .navLink.active:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #000000;
+}
+
+/* Construction theme links */
+.construction .navLink {
+  color: #4a5568;
+}
+
+.construction .navLink:hover {
+  color: #d97600;
+}
+
+.construction .navLink.active {
+  color: #d97600;
+}
+
+.construction .navLink.active:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ffb400;
+}
+
+/* Nav controls area */
+.navControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Mobile menu */
+.mobileMenuButton {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Theme-specific mobile menu bars */
+.blueprint .menuBar {
+  background-color: #0072ce;
+}
+
+.minimalist .menuBar {
+  background-color: #333333;
+}
+
+.construction .menuBar {
+  background-color: #d97600;
+}
+
+.menuBar {
+  width: 2rem;
+  height: 0.25rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.navLinksMobile {
+  display: none;
+}
+
+.mobileThemeSelector {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .navLinksDesktop {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    display: flex;
+  }
+
+  .navLinksMobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .blueprint .navLinksMobile {
+    border-top: 1px solid #d1e3fa;
+  }
+
+  .minimalist .navLinksMobile {
+    border-top: 1px solid #eaeaea;
+  }
+
+  .construction .navLinksMobile {
+    border-top: 2px solid #ffb400;
+  }
+
+  .navLinksMobile.open {
+    max-height: 300px;
+    padding: 1rem 0;
+  }
+
+  .navLinksMobile .navLink {
+    margin: 0.5rem 0;
+    width: 100%;
+    text-align: center;
+  }
+}

@@ -1,0 +1,173 @@
+/* app/components/ui/styles/ThemeSelector.module.css */
+
+.themeSelector {
+  position: relative;
+}
+
+.themeSelectorButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+/* Blueprint theme */
+.blueprint.themeSelectorButton {
+  background-color: rgba(0, 114, 206, 0.1);
+  border-color: #0072ce;
+  color: #0072ce;
+}
+
+.blueprint.themeSelectorButton:hover {
+  background-color: rgba(0, 114, 206, 0.2);
+}
+
+/* Minimalist theme */
+.minimalist.themeSelectorButton {
+  background-color: rgba(30, 30, 30, 0.05);
+  border-color: #333;
+  color: #333;
+}
+
+.minimalist.themeSelectorButton:hover {
+  background-color: rgba(30, 30, 30, 0.1);
+}
+
+/* Construction theme */
+.construction.themeSelectorButton {
+  background-color: rgba(255, 180, 0, 0.1);
+  border-color: #ffb400;
+  color: #d97600;
+}
+
+.construction.themeSelectorButton:hover {
+  background-color: rgba(255, 180, 0, 0.2);
+}
+
+.themeIcon {
+  font-size: 1.25rem;
+}
+
+.themeName {
+  font-weight: 500;
+}
+
+.dropdownArrow {
+  font-size: 0.625rem;
+  margin-left: 0.25rem;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+  overflow: hidden;
+  width: 180px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+/* Blueprint theme dropdown */
+.blueprint.dropdown {
+  background-color: #ffffff;
+  border: 1px solid #d1e3fa;
+}
+
+/* Minimalist theme dropdown */
+.minimalist.dropdown {
+  background-color: #ffffff;
+  border: 1px solid #eaeaea;
+}
+
+/* Construction theme dropdown */
+.construction.dropdown {
+  background-color: #ffffff;
+  border: 1px solid #ffe0a3;
+}
+
+.themeOption {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+/* Blueprint theme options */
+.blueprint .themeOption {
+  color: #333;
+}
+
+.blueprint .themeOption:hover {
+  background-color: #f0f7ff;
+}
+
+.blueprint .themeOption.active {
+  background-color: #e6f2ff;
+  color: #0072ce;
+}
+
+/* Minimalist theme options */
+.minimalist .themeOption {
+  color: #333;
+}
+
+.minimalist .themeOption:hover {
+  background-color: #f8f8f8;
+}
+
+.minimalist .themeOption.active {
+  background-color: #f2f2f2;
+  color: #000;
+}
+
+/* Construction theme options */
+.construction .themeOption {
+  color: #333;
+}
+
+.construction .themeOption:hover {
+  background-color: #fffaf0;
+}
+
+.construction .themeOption.active {
+  background-color: #fff5e6;
+  color: #d97600;
+}
+
+@media (max-width: 768px) {
+  .themeName, .dropdownArrow {
+    display: none;
+  }
+  
+  .mobileThemeSelector {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .dropdown {
+    position: fixed;
+    top: auto;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 300px;
+    right: auto;
+  }
+}
