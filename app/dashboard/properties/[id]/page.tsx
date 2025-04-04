@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { use } from 'react';
 import { propertyService } from '@/lib/services/propertyService';
 import { Property } from '@/types/supabase';
 import PropertyImages from './components/PropertyImages';
@@ -11,13 +12,15 @@ import DeletePropertyButton from './components/DeletePropertyButton';
 import styles from './styles/PropertyPage.module.css';
 
 interface PageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
 export default function PropertyDetailPage({ params }: PageProps) {
-  const { id } = params;
+  const resolvedParams = use(params);
+  const { id } = resolvedParams;
+  
   const router = useRouter();
   const [property, setProperty] = useState<Property | null>(null);
   const [isLoading, setIsLoading] = useState(true);
