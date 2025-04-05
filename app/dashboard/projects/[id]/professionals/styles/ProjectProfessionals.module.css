@@ -1,0 +1,102 @@
+/**
+ * File: app/dashboard/projects/[id]/professionals/styles/ProjectProfessionals.module.css
+ * CSS for the Project Professionals page
+ */
+
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  margin: 0;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.filterButton {
+  background-color: var(--color-gray-100);
+  color: var(--color-text);
+  border: 1px solid var(--color-gray-300);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filterButton:hover {
+  background-color: var(--color-gray-200);
+}
+
+.activeFilter {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-color: var(--color-primary);
+}
+
+.activeFilter:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.professionalsList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 3rem;
+  color: var(--color-text-light);
+}
+
+.emptyStateIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--color-gray-400);
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+.errorContainer {
+  background-color: rgba(181, 99, 87, 0.1);
+  border: 1px solid var(--color-error);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  color: var(--color-error);
+}
+
+@media (min-width: 768px) {
+  .professionalsList {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .professionalsList {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

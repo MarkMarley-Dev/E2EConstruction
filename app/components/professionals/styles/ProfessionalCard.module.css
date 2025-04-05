@@ -1,0 +1,192 @@
+/**
+ * File: app/components/professionals/styles/ProfessionalCard.module.css
+ * CSS Module for the Professional Card component
+ */
+
+.card {
+  background-color: var(--color-card-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--color-shadow);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--color-shadow);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+  margin-right: 1rem;
+}
+
+.avatarPlaceholder {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--color-primary-light);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.nameSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.verifiedBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.5rem;
+  color: var(--color-white);
+  background-color: var(--color-success);
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  font-size: 0.7rem;
+}
+
+.roleInfo {
+  display: flex;
+  margin-top: 0.25rem;
+}
+
+.role {
+  color: var(--color-primary);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.company {
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+.experience, .location {
+  color: var(--color-text-light);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.ratingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.ratingStars {
+  display: flex;
+  margin-bottom: 0.25rem;
+}
+
+.starFull, .starHalf, .starEmpty {
+  font-size: 1rem;
+}
+
+.starFull, .starHalf {
+  color: var(--color-warning);
+}
+
+.starEmpty {
+  color: var(--color-gray-300);
+}
+
+.ratingText {
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+}
+
+.specializations {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.specializationTag {
+  background-color: var(--color-background-alt);
+  color: var(--color-text);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+}
+
+.bio {
+  color: var(--color-text);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.inviteButton {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.inviteButton:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.alreadyInvited {
+  background-color: var(--color-gray-400);
+  color: var(--color-white);
+  border: none;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column;
+  }
+  
+  .ratingContainer {
+    margin-top: 1rem;
+    align-items: flex-start;
+  }
+}
