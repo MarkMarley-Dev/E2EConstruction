@@ -373,6 +373,31 @@ export interface Professional extends Profile {
   // Any additional fields or computed properties specific to professionals
 }
 
+// Extended project interface with related data for dashboard display
+export interface ProjectWithRelations extends Project {
+  properties?: {
+    id: string;
+    address_line1: string;
+    address_line2?: string | null;
+    city: string;
+    postal_code: string;
+  };
+  project_professionals?: Array<{
+    id: string;
+    professional_id: string;
+    role: string;
+    status: string;
+    profiles?: {
+      id: string;
+      first_name: string | null;
+      last_name: string | null;
+      role: string | null;
+      company_name: string | null;
+      verified: boolean | null;
+    }
+  }>;
+}
+
 // Function to map profile data to our component model
 export function mapProfileToProfessional(profile: Profile): Professional {
   return {
@@ -381,3 +406,48 @@ export function mapProfileToProfessional(profile: Profile): Professional {
     verified: profile.verified || false
   };
 }
+
+// Project type constants for UI display
+export const PROJECT_TYPES = {
+  extension: 'Extension',
+  renovation: 'Renovation',
+  new_build: 'New Build',
+  loft_conversion: 'Loft Conversion',
+  basement: 'Basement',
+  garage_conversion: 'Garage Conversion',
+  interior_redesign: 'Interior Redesign',
+  garden_landscaping: 'Garden/Landscaping',
+  other: 'Other'
+};
+
+// Project status constants for UI display
+export const PROJECT_STATUSES = {
+  new: 'New',
+  planning: 'Planning',
+  design: 'Design',
+  in_progress: 'In Progress',
+  on_hold: 'On Hold',
+  completed: 'Completed',
+  cancelled: 'Cancelled'
+};
+
+// Budget range constants for UI display
+export const BUDGET_RANGES = {
+  under_10k: 'Under £10,000',
+  '10k_25k': '£10,000 - £25,000',
+  '25k_50k': '£25,000 - £50,000',
+  '50k_100k': '£50,000 - £100,000',
+  '100k_250k': '£100,000 - £250,000',
+  '250k_500k': '£250,000 - £500,000',
+  '500k_1m': '£500,000 - £1,000,000',
+  above_1m: 'Above £1,000,000'
+};
+
+// Timeline constants for UI display
+export const TIMELINES = {
+  under_1_month: 'Under 1 month',
+  '1_3_months': '1-3 months',
+  '3_6_months': '3-6 months',
+  '6_12_months': '6-12 months',
+  above_12_months: 'Above 12 months'
+};

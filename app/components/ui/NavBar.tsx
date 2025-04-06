@@ -21,9 +21,9 @@ const NavBar: React.FC = () => {
 
   // Updated navItems based on your actual project structure
   const navItems: NavItem[] = [
-    { title: 'Home', path: '/' },
+    { title: 'Projects', path: '/dashboard/projects' },
     { title: 'Dashboard', path: '/dashboard' },
-    { title: 'Properties', path: '/properties' },
+    { title: 'Properties', path: '/dashboard/properties' },
     { title: 'Design System', path: '/design-system' },
   ];
 

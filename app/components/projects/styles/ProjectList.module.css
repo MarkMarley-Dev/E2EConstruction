@@ -1,0 +1,21 @@
+/* File: app/components/projects/styles/ProjectList.module.css */
+.projectList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+}
+
+.projectCardWrapper {
+  height: 100%;
+  transition: transform 0.2s;
+}
+
+.projectCardWrapper:hover {
+  transform: translateY(-4px);
+}
+
+@media (max-width: 768px) {
+  .projectList {
+    grid-template-columns: 1fr;
+  }
+}

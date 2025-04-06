@@ -1,0 +1,110 @@
+/* File: app/components/projects/styles/ProjectCard.module.css */
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-card-bg);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px var(--color-shadow);
+  overflow: hidden;
+  height: 100%;
+  transition: box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px var(--color-shadow);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-primary);
+}
+
+.status {
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.statusNew {
+  background-color: rgba(125, 140, 124, 0.1); /* Based on your accent color */
+  color: var(--color-accent);
+}
+
+.statusPlanning {
+  background-color: rgba(55, 71, 79, 0.1);
+  color: var(--color-planning);
+}
+
+.statusInProgress {
+  background-color: rgba(196, 139, 159, 0.1);
+  color: var(--color-party-wall);
+}
+
+.statusCompleted {
+  background-color: rgba(107, 144, 128, 0.15);
+  color: var(--color-success);
+}
+
+.statusOnHold {
+  background-color: rgba(221, 164, 72, 0.15);
+  color: var(--color-warning-dark);
+}
+
+.details {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.detailItem {
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: baseline;
+}
+
+.detailLabel {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--color-text-light);
+  width: 100px;
+}
+
+.detailValue {
+  flex: 1;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.professionals {
+  padding: 0.75rem 1rem;
+  background-color: var(--color-gray-100);
+  border-top: 1px solid var(--color-border-light);
+  display: flex;
+  align-items: center;
+}
+
+.professionalsLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-light);
+  margin-right: 0.5rem;
+}
+
+.professionalsCount {
+  font-size: 0.875rem;
+  color: var(--color-text);
+}
