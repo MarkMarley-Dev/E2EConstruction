@@ -1,0 +1,120 @@
+/**
+ * File: app/components/projects/styles/ProjectTimeline.module.css
+ * Styles for the ProjectTimeline component
+ */
+
+.timelineContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-gray-500);
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+.milestone {
+  display: flex;
+  position: relative;
+}
+
+.milestoneContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.milestonePoint {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--color-gray-200);
+  border: 2px solid var(--color-gray-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-white);
+  z-index: 1;
+}
+
+.milestone.completed .milestonePoint {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.milestone.active .milestonePoint {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(var(--color-primary), 0.2);
+}
+
+.milestoneLine {
+  position: absolute;
+  top: 24px;
+  left: 12px;
+  width: 2px;
+  height: calc(100% + 1.5rem);
+  background-color: var(--color-gray-300);
+}
+
+.completedLine {
+  background-color: var(--color-success);
+}
+
+.milestoneDetails {
+  flex: 1;
+}
+
+.milestoneLabel {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--color-gray-800);
+}
+
+.milestone.active .milestoneLabel {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.milestone.completed .milestoneLabel {
+  color: var(--color-success-dark);
+}
+
+.milestoneDate {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--color-gray-600);
+}
+
+.timelineActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .timeline {
+    padding-left: 0.5rem;
+  }
+  
+  .milestonePoint {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .milestoneLine {
+    top: 20px;
+    left: 10px;
+  }
+}

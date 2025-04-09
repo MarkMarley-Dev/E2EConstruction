@@ -1,0 +1,129 @@
+/**
+ * File: app/components/projects/styles/ProjectTeam.module.css
+ * Styles for the ProjectTeam component
+ */
+
+.container {
+  width: 100%;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+}
+
+.errorContainer {
+  padding: 1rem;
+  background-color: rgba(181, 99, 87, 0.1);
+  border-radius: 6px;
+  color: var(--color-error);
+  font-size: 0.875rem;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  border: 2px dashed var(--color-gray-300);
+  border-radius: 6px;
+  color: var(--color-gray-600);
+  background-color: var(--color-gray-100);
+}
+
+.emptyState p {
+  margin-bottom: 1.5rem;
+}
+
+.teamList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.teamMember {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  background-color: var(--color-gray-100);
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.teamMember:hover {
+  background-color: var(--color-gray-200);
+}
+
+.memberAvatar {
+  margin-right: 1rem;
+}
+
+.avatarImage {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.avatarPlaceholder {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: var(--color-primary-light);
+  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.memberInfo {
+  flex: 1;
+}
+
+.memberName {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  color: var(--color-gray-900);
+}
+
+.memberRole {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.roleLabel {
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: var(--color-white);
+}
+
+.projectRole {
+  font-size: 0.75rem;
+  color: var(--color-gray-600);
+}
+
+.memberStatus {
+  font-size: 0.75rem;
+  color: var(--color-gray-600);
+}
+
+.statusValue {
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.teamActions {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
