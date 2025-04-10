@@ -1,6 +1,6 @@
 /**
  * File: app/components/projects/ProjectProperty.tsx
- * Updated Property Component with proper field mapping
+ * Updated Property Component with proper field mapping and TypeScript fixes
  */
 
 'use client';
@@ -8,6 +8,22 @@
 import Link from 'next/link';
 import styles from './styles/ProjectProperty.module.css';
 import { useState, useEffect } from 'react';
+
+interface FormValues {
+  property_name?: string;
+  property_type: string;
+  address_line1: string;
+  address_line2?: string;
+  city: string;
+  postal_code: string;
+  country: string;
+  area_sqm?: string;
+  construction_year?: string;
+  bedrooms?: string;
+  bathrooms?: string;
+  description?: string;
+  [key: string]: string | undefined;
+}
 
 interface ProjectPropertyProps {
   property: any;
@@ -17,7 +33,13 @@ interface ProjectPropertyProps {
 
 export default function ProjectProperty({ property, isEditing = false, onChange }: ProjectPropertyProps) {
   // Local state to maintain the form values for UI display
-  const [formValues, setFormValues] = useState<any>({});
+  const [formValues, setFormValues] = useState<FormValues>({
+    property_type: 'residential',
+    address_line1: '',
+    city: '',
+    postal_code: '',
+    country: 'United Kingdom'
+  });
 
   useEffect(() => {
     if (property) {
@@ -33,10 +55,10 @@ export default function ProjectProperty({ property, isEditing = false, onChange 
         country: property.country || 'United Kingdom',
         
         // Mapped fields for UI
-        area_sqm: property.floor_area_sqm || '',
-        construction_year: property.year_built || '',
-        bedrooms: property.num_bedrooms || '',
-        bathrooms: property.num_bathrooms || '',
+        area_sqm: property.floor_area_sqm?.toString() || '',
+        construction_year: property.year_built?.toString() || '',
+        bedrooms: property.num_bedrooms?.toString() || '',
+        bathrooms: property.num_bathrooms?.toString() || '',
         description: property.description || ''
       });
     }
@@ -57,7 +79,7 @@ export default function ProjectProperty({ property, isEditing = false, onChange 
     const { name, value } = e.target;
     
     // Update local form state
-    setFormValues(prev => ({
+    setFormValues((prev: FormValues) => ({
       ...prev,
       [name]: value
     }));
@@ -65,24 +87,24 @@ export default function ProjectProperty({ property, isEditing = false, onChange 
     if (onChange) {
       // Map UI field names to database field names when passing up
       let dbFieldName = name;
-      let dbValue = value;
+      let dbValue: string | number | null = value;
       
       switch (name) {
         case 'area_sqm':
           dbFieldName = 'floor_area_sqm';
-          dbValue = value === '' ? null : value;
+          dbValue = value === '' ? null : parseFloat(value);
           break;
         case 'construction_year':
           dbFieldName = 'year_built';
-          dbValue = value === '' ? null : value;
+          dbValue = value === '' ? null : parseInt(value, 10);
           break;
         case 'bedrooms':
           dbFieldName = 'num_bedrooms';
-          dbValue = value === '' ? null : value;
+          dbValue = value === '' ? null : parseInt(value, 10);
           break;
         case 'bathrooms':
           dbFieldName = 'num_bathrooms';
-          dbValue = value === '' ? null : value;
+          dbValue = value === '' ? null : parseFloat(value);
           break;
         default:
           // For all other fields, keep the same name
@@ -127,7 +149,7 @@ export default function ProjectProperty({ property, isEditing = false, onChange 
               type="text"
               id="address_line1"
               name="address_line1"
-              value={formValues.address_line1 || ''}
+              value={formValues.address_line1}
               onChange={handleChange}
               required
               className={styles.input}
@@ -151,7 +173,7 @@ export default function ProjectProperty({ property, isEditing = false, onChange 
                 type="text"
                 id="city"
                 name="city"
-                value={formValues.city || ''}
+                value={formValues.city}
                 onChange={handleChange}
                 required
                 className={styles.input}
@@ -163,7 +185,7 @@ export default function ProjectProperty({ property, isEditing = false, onChange 
                 type="text"
                 id="postal_code"
                 name="postal_code"
-                value={formValues.postal_code || ''}
+                value={formValues.postal_code}
                 onChange={handleChange}
                 required
                 className={styles.input}
@@ -175,7 +197,7 @@ export default function ProjectProperty({ property, isEditing = false, onChange 
             <select
               id="property_type"
               name="property_type"
-              value={formValues.property_type || 'residential'}
+              value={formValues.property_type}
               onChange={handleChange}
               className={styles.select}
             >
