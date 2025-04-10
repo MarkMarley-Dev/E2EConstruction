@@ -1,98 +1,176 @@
-/**
- * File: app/components/projects/styles/ProjectProperty.module.css
- * Styles for the ProjectProperty component
- */
+/* File: app/components/projects/styles/ProjectProperty.module.css */
 
-.propertyContainer {
+.propertyCard {
+  width: 100%;
+  background-color: var(--color-white);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.propertyContent {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.propertyImage {
-  width: 100%;
-  height: 160px;
-  border-radius: 6px;
-  overflow: hidden;
+.propertyHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 0.5rem;
 }
 
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.propertyTypeTag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-white);
+  background-color: var(--color-primary-light);
+  text-transform: uppercase;
 }
 
-.propertyImagePlaceholder {
-  width: 100%;
-  height: 160px;
-  background-color: var(--color-gray-200);
-  border-radius: 6px;
+.addressContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.addressIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-gray-500);
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--color-gray-100);
+  border-radius: 50%;
+  color: var(--color-primary);
+}
+
+.address {
+  flex: 1;
+}
+
+.addressLine {
+  margin: 0;
+  line-height: 1.5;
+  color: var(--color-text);
 }
 
 .propertyDetails {
+  padding: 0.5rem 0;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.detailItem {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
 }
 
-.propertyAddress {
-  margin: 0;
-  font-size: 1.1rem;
-  color: var(--color-gray-900);
+.detailIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  background-color: var(--color-gray-100);
+  border-radius: 50%;
+  color: var(--color-primary);
 }
 
-.propertyLocation {
-  margin: 0;
-  font-size: 0.9rem;
-  color: var(--color-gray-600);
-}
-
-.propertySpecs {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-  margin-top: 0.5rem;
-}
-
-.propertySpec {
+.detailContent {
   display: flex;
   flex-direction: column;
-  gap: 0.125rem;
 }
 
-.specLabel {
+.detailValue {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.detailLabel {
   font-size: 0.75rem;
-  color: var(--color-gray-600);
+  color: var(--color-text-light);
 }
 
-.specValue {
-  font-size: 0.875rem;
-  color: var(--color-gray-900);
-  font-weight: 500;
+.propertyActions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.viewPropertyLink {
-  margin-top: 0.5rem;
+/* Empty state styling */
+.emptyState {
+  padding: 2rem;
   text-align: center;
-}
-
-.noProperty {
+  color: var(--color-text-light);
+  background-color: var(--color-gray-100);
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  text-align: center;
-  border: 2px dashed var(--color-gray-300);
-  border-radius: 6px;
-  color: var(--color-gray-600);
-  background-color: var(--color-gray-100);
+  gap: 1rem;
 }
 
-.noProperty p {
-  margin-bottom: 1.5rem;
+.emptyState p {
+  margin: 0;
+}
+
+/* Form styling for edit mode */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.input,
+.select,
+.textarea {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  background-color: var(--color-white);
+  transition: all 0.2s ease;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-focus);
+}
+
+.textarea {
+  min-height: 100px;
+  resize: vertical;
 }
