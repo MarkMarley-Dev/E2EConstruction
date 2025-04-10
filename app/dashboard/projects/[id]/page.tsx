@@ -6,7 +6,7 @@
 'use client';
 
 import { notFound, useRouter } from 'next/navigation';
-import { Suspense, useState, useEffect } from 'react';
+import { Suspense, useState, useEffect, use } from 'react';
 import Link from 'next/link';
 import LoadingSpinner from '@/components/ui/LoadingSpinner';
 import ProjectTimeline from '@/components/projects/ProjectTimeline';
@@ -28,7 +28,10 @@ const PROJECT_STAGES = {
   'completion': 'Completion'
 };
 
-export default function ProjectDetailsPage({ params }: { params: { id: string } }) {
+export default function ProjectDetailsPage({ params }: { params: Promise<{ id: string }> }) {
+  const resolvedParams = use(params); // Unwrap the params Promise
+  const projectId = resolvedParams.id;
+  
   const router = useRouter();
   const supabase = createClientComponentClient();
   const [session, setSession] = useState<any>(null);
@@ -58,7 +61,7 @@ export default function ProjectDetailsPage({ params }: { params: { id: string } 
         const { data: projectData, error: projectError } = await supabase
           .from('projects')
           .select('*')
-          .eq('id', params.id)
+          .eq('id', projectId)
           .single();
         
         if (projectError || !projectData) {
@@ -89,7 +92,7 @@ export default function ProjectDetailsPage({ params }: { params: { id: string } 
     }
     
     fetchData();
-  }, [params.id, router, supabase]);
+  }, [projectId, router, supabase]);
 
 const handleSaveProject = async (updatedDetails: any) => {
   try {
@@ -99,7 +102,7 @@ const handleSaveProject = async (updatedDetails: any) => {
     const { error: projectError } = await supabase
       .from('projects')
       .update(updatedDetails)
-      .eq('id', params.id);
+      .eq('id', projectId);
       
     if (projectError) {
       console.error('Error updating project:', projectError);
@@ -295,7 +298,7 @@ const handleSaveProject = async (updatedDetails: any) => {
             <section className={`${styles.sidebarSection} card`}>
               <h2 className={styles.sectionTitle}>Project Timeline</h2>
               <ProjectTimeline 
-                projectId={params.id} 
+                projectId={projectId} 
                 currentStage={currentStage} 
                 stages={PROJECT_STAGES} 
               />
@@ -315,7 +318,7 @@ const handleSaveProject = async (updatedDetails: any) => {
             <section className={`${styles.sidebarSection} card`}>
               <h2 className={styles.sectionTitle}>Actions</h2>
               <ProjectActions 
-                projectId={params.id} 
+                projectId={projectId} 
                 currentStage={currentStage}
                 userRole={session.user.user_metadata.role || 'homeowner'}
               />

@@ -1,6 +1,6 @@
 /**
  * File: app/components/projects/ProjectTeam.tsx
- * Project Team Component for displaying professionals on a project
+ * Project Team Component with database schema fixes
  */
 'use client';
 
@@ -16,10 +16,9 @@ interface Professional {
   name: string;
   role: string;
   company?: string;
-  specialization?: string;
-  rating?: number;
+  email?: string;
   avatar_url?: string;
-  verified: boolean;
+  verified?: boolean;
   status?: string;
   project_role?: string;
 }
@@ -44,24 +43,10 @@ export default function ProjectTeam({ isEditing = false }: ProjectTeamProps) {
       try {
         setLoading(true);
         
-        // Fetch project professionals (those already associated with the project)
+        // First, fetch the project_professionals entries
         const { data: projectProfessionals, error: projectProfessionalsError } = await supabase
           .from('project_professionals')
-          .select(`
-            professional_id,
-            status,
-            role,
-            profiles!professional_id(
-              id,
-              full_name,
-              role,
-              company,
-              specialization,
-              rating,
-              avatar_url,
-              verified
-            )
-          `)
+          .select('professional_id, status, role')
           .eq('project_id', projectId);
           
         if (projectProfessionalsError) {
@@ -71,55 +56,68 @@ export default function ProjectTeam({ isEditing = false }: ProjectTeamProps) {
         if (!projectProfessionals || projectProfessionals.length === 0) {
           setProfessionals([]);
         } else {
-          // Map to the expected Professional format
-          const teamMembers = projectProfessionals.map(item => {
-            const profile = item.profiles as any;
-            return {
-              id: profile.id,
-              name: profile.full_name,
-              role: profile.role,
-              company: profile.company,
-              specialization: profile.specialization,
-              rating: profile.rating,
-              avatar_url: profile.avatar_url,
-              verified: profile.verified || false,
-              status: item.status,
-              project_role: item.role
-            };
-          });
+          // Get all professional IDs that are part of this project
+          const professionalIds = projectProfessionals.map(item => item.professional_id);
+          
+          // Fetch the profiles for these professionals
+          const { data: profilesData, error: profilesError } = await supabase
+            .from('profiles')
+            .select('id, first_name, last_name, email, role, company_name')
+            .in('id', professionalIds);
+            
+          if (profilesError) {
+            throw new Error(`Failed to load professional profiles: ${profilesError.message}`);
+          }
+          
+          // Combine the data from both queries
+          const teamMembers = professionalIds.map(profId => {
+            const projectProfessional = projectProfessionals.find(pp => pp.professional_id === profId);
+            const profile = profilesData?.find(p => p.id === profId);
+            
+            if (profile) {
+              return {
+                id: profile.id,
+                name: `${profile.first_name} ${profile.last_name}`,
+                role: profile.role,
+                company: profile.company_name,
+                email: profile.email,
+                status: projectProfessional?.status,
+                project_role: projectProfessional?.role
+              };
+            }
+            
+            return null;
+          }).filter(member => member !== null) as Professional[];
           
           setProfessionals(teamMembers);
         }
 
         // If in editing mode, fetch available professionals that can be added
         if (isEditing) {
+          // Get all professional IDs that are already part of this project
+          const existingProfessionalIds = projectProfessionals ? 
+            projectProfessionals.map(p => p.professional_id) : [];
+          
+          // Fetch available professionals
           const { data: availableProfs, error: availableError } = await supabase
             .from('profiles')
-            .select(`
-              id,
-              full_name,
-              role,
-              company,
-              specialization,
-              rating,
-              avatar_url,
-              verified
-            `)
-            .in('role', ['architect', 'surveyor', 'contractor'])
-            .not('id', 'in', projectProfessionals ? projectProfessionals.map(p => p.professional_id) : [])
-            .limit(10);
+            .select('id, first_name, last_name, email, role, company_name')
+            .in('role', ['architect', 'surveyor', 'contractor']);
 
-          if (!availableError && availableProfs) {
-            const mappedAvailable = availableProfs.map(prof => ({
-              id: prof.id,
-              name: prof.full_name,
-              role: prof.role,
-              company: prof.company,
-              specialization: prof.specialization,
-              rating: prof.rating,
-              avatar_url: prof.avatar_url,
-              verified: prof.verified || false
-            }));
+          if (availableError) {
+            console.error('Error fetching available professionals:', availableError);
+          } else if (availableProfs) {
+            // Filter out professionals already in the project
+            const mappedAvailable = availableProfs
+              .filter(prof => !existingProfessionalIds.includes(prof.id))
+              .map(prof => ({
+                id: prof.id,
+                name: `${prof.first_name} ${prof.last_name}`,
+                role: prof.role,
+                company: prof.company_name,
+                email: prof.email
+              }));
+              
             setAvailableProfessionals(mappedAvailable);
           }
         }
@@ -298,6 +296,11 @@ export default function ProjectTeam({ isEditing = false }: ProjectTeamProps) {
                       </span>
                     )}
                   </div>
+                  {professional.company && (
+                    <div className={styles.memberCompany}>
+                      {professional.company}
+                    </div>
+                  )}
                   {professional.status && (
                     <div className={styles.memberStatus}>
                       Status: <span className={styles.statusValue}>{professional.status}</span>
@@ -335,7 +338,8 @@ export default function ProjectTeam({ isEditing = false }: ProjectTeamProps) {
                     .filter(p => 
                       searchQuery === '' || 
                       p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                      p.role.toLowerCase().includes(searchQuery.toLowerCase())
+                      p.role.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                      (p.company && p.company.toLowerCase().includes(searchQuery.toLowerCase()))
                     )
                     .map(professional => (
                       <div key={professional.id} className={styles.availableProfessional}>
@@ -385,7 +389,7 @@ export default function ProjectTeam({ isEditing = false }: ProjectTeamProps) {
             </div>
           )}
           
-          {!isEditing && (
+          {!isEditing && professionals.length > 0 && (
             <div className={styles.teamActions}>
               <Link 
                 href={`/dashboard/projects/${projectId}/professionals`} 

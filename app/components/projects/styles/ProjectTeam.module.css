@@ -250,3 +250,8 @@
   color: var(--color-text-light);
   font-size: 0.875rem;
 }
+.memberCompany {
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  margin-top: 0.25rem;
+}
